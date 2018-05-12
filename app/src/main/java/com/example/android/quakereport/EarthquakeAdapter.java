@@ -20,10 +20,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.android.quakereport.Earthquake;
 
 import java.util.ArrayList;
 
@@ -88,7 +85,13 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
-        dateTextView.setText(currentEarthQuake.getDate());
+        dateTextView.setText(currentEarthQuake.getDateToDisplay());
+
+        // Find the TextView in the list_item.xml layout with the ID version_name
+        TextView timeTextView = (TextView) listItemView.findViewById(R.id.time);
+        // Get the version name from the current AndroidFlavor object and
+        // set this text on the name TextView
+        timeTextView.setText(currentEarthQuake.getTimeToDisplay());
 
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView

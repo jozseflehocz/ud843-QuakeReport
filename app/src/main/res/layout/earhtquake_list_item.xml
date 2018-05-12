@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_vertical"
     android:padding="16dp">
 
     <TextView
@@ -12,20 +13,32 @@
         android:layout_weight="1"
         android:text="TextView"
         tools:text="8.9"/>
-
     <TextView
         android:id="@+id/location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_weight="5"
         android:text="TextView"
         tools:text="San Francisco, CA"/>
-
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="2"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
     <TextView
         android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="TextView"
         tools:text="Mar 6 2010"/>
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="TextView"
+        tools:text="23:59:00"/>
+</LinearLayout>
 </LinearLayout>
