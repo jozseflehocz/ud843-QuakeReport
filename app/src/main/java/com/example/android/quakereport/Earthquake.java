@@ -6,7 +6,7 @@ import java.util.Date;
 public class Earthquake {
 
     private String mLocation;
-    private String mMagnitude;
+    private Double mMagnitude;
     private Long mTime;
     private Date dateObject;
     private SimpleDateFormat dateFormatter;
@@ -14,7 +14,7 @@ public class Earthquake {
     private String dateToDisplay;
     private String timeToDisplay;
 
-    public Earthquake(String location, String magnitude, Long time){
+    public Earthquake(String location, Double magnitude, Long time){
         mLocation=location;
         mMagnitude=magnitude;
         mTime=time;
@@ -29,7 +29,7 @@ public class Earthquake {
         return mLocation;
     }
 
-    public String getMagnitude() {
+    public Double getMagnitude() {
         return mMagnitude;
     }
 

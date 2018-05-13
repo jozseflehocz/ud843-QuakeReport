@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /*
@@ -31,6 +32,11 @@ import java.util.ArrayList;
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     private static final String LOG_TAG = EarthquakeAdapter.class.getSimpleName();
+
+    private String locationOffset;
+    private String primarylocation;
+    private String locationParts[];
+    private String location;
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -73,13 +79,34 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.magnitude);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
-        magnitudeTextView.setText(currentEarthQuake.getMagnitude());
+
+        String pattern = "0.0";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+
+        String format = decimalFormat.format(currentEarthQuake.getMagnitude());
+
+
+        magnitudeTextView.setText(format);
+
+        location=currentEarthQuake.getLocation();
+        locationOffset="Near by";
+        if (location.contains(",")){
+            locationParts=location.split(",");
+            locationOffset=locationParts[0];
+            primarylocation=locationParts[1];
+        }
 
         // Find the TextView in the list_item.xml layout with the ID version_name
-        TextView locationTextView = (TextView) listItemView.findViewById(R.id.location);
+        TextView locationOffsetTextView = (TextView) listItemView.findViewById(R.id.location_offset);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
-        locationTextView.setText(currentEarthQuake.getLocation());
+        locationOffsetTextView.setText(locationOffset);
+
+        // Find the TextView in the list_item.xml layout with the ID version_name
+        TextView primaryLocationTextView = (TextView) listItemView.findViewById(R.id.primary_location);
+        // Get the version name from the current AndroidFlavor object and
+        // set this text on the name TextView
+        primaryLocationTextView.setText(primarylocation);
 
         // Find the TextView in the list_item.xml layout with the ID version_name
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date);
