@@ -134,8 +134,8 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         location=currentEarthQuake.getLocation();
         locationOffset="Near by";
         if (location.contains(",")){
-            locationParts=location.split(",");
-            locationOffset=locationParts[0];
+            locationParts=location.split("of");
+            locationOffset=locationParts[0]+" of";
             primarylocation=locationParts[1];
         }
 
