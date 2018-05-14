@@ -13,8 +13,9 @@ public class Earthquake {
     private SimpleDateFormat timeFormatter;
     private String dateToDisplay;
     private String timeToDisplay;
+    private String mUrl;
 
-    public Earthquake(String location, Double magnitude, Long time){
+    public Earthquake(String location, Double magnitude, Long time,String url){
         mLocation=location;
         mMagnitude=magnitude;
         mTime=time;
@@ -23,6 +24,7 @@ public class Earthquake {
         dateToDisplay = dateFormatter.format(dateObject);
         timeFormatter = new SimpleDateFormat("HH:mm:ss");
         timeToDisplay = timeFormatter.format(dateObject);
+        mUrl=url;
     }
 
     public String getLocation() {
@@ -39,6 +41,10 @@ public class Earthquake {
 
     public String getTimeToDisplay() {
         return timeToDisplay;
+    }
+
+    public String getUrl() {
+        return mUrl;
     }
 
 }
