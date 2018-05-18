@@ -46,14 +46,14 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
      * to populate into the lists.
      *
      * @param context        The current context. Used to inflate the layout file.
-     * @param Earthquakes A List of Earthquake objects to display in a list
+     * @param earthquakes A List of Earthquake objects to display in a list
      */
-    public EarthquakeAdapter(Activity context, ArrayList<Earthquake> Earthquakes) {
+    public EarthquakeAdapter(Activity context, ArrayList<Earthquake> earthquakes) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
-        super(context, 0, Earthquakes);
+        super(context, 0, earthquakes);
     }
 
     private int getMagnitudeColor(double magnitude) {

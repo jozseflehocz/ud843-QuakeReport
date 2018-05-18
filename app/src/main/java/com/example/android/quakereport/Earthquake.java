@@ -15,12 +15,12 @@ public class Earthquake {
     private String timeToDisplay;
     private String mUrl;
 
-    public Earthquake(String location, Double magnitude, Long time,String url){
+    public Earthquake(Double magnitude, String location, Long time,String url){
         mLocation=location;
         mMagnitude=magnitude;
         mTime=time;
         dateObject=new Date(time);
-        dateFormatter = new SimpleDateFormat("MMM DD, yyyy");
+        dateFormatter = new SimpleDateFormat("yyyy.MM.dd.");
         dateToDisplay = dateFormatter.format(dateObject);
         timeFormatter = new SimpleDateFormat("HH:mm:ss");
         timeToDisplay = timeFormatter.format(dateObject);
