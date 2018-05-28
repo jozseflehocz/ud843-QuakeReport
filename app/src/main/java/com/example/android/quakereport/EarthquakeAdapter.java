@@ -33,13 +33,6 @@ import android.graphics.drawable.GradientDrawable;
  * */
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
-    private static final String LOG_TAG = EarthquakeAdapter.class.getSimpleName();
-
-    private String locationOffset;
-    private String primarylocation;
-    private String locationParts[];
-    private String location;
-
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
      * The context is used to inflate the layout file, and the list is the data we want
@@ -125,18 +118,19 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         String pattern = "0.0";
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
-
         String format = decimalFormat.format(currentEarthQuake.getMagnitude());
-
-
         magnitudeTextView.setText(format);
 
-        location=currentEarthQuake.getLocation();
+        String locationOffset;
+        String locationParts[];
+        String location=currentEarthQuake.getLocation();
+        String primarylocation=location;
+
         locationOffset="Near by";
-        if (location.contains(",")){
+        if (location.contains("of")){
             locationParts=location.split("of");
-            locationOffset=locationParts[0]+" of";
-            primarylocation=locationParts[1];
+                locationOffset = locationParts[0]+" of";
+                primarylocation = locationParts[1];
         }
 
         // Set the proper background color on the magnitude circle.
@@ -148,8 +142,6 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         // Set the color on the magnitude circle
         magnitudeCircle.setColor(magnitudeColor);
-
-
 
         // Find the TextView in the list_item.xml layout with the ID version_name
         TextView locationOffsetTextView = (TextView) listItemView.findViewById(R.id.location_offset);
